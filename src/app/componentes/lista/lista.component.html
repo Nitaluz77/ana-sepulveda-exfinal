@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Publicaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCreatePublicacion()">Crear</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let publicacion of publications; let i = index">
+      <ion-label>
+        <h2>{{ publicacion.title }}</h2>
+        <p>{{ publicacion.description }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button color="danger" (click)="confirmDelete(i)">
+          Eliminar
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>
