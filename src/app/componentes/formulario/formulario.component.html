@@ -5,17 +5,17 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="publicationForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="stacked">Título</ion-label>
       <ion-input type="text" formControlName="title"></ion-input>
     </ion-item>
-    <div *ngIf="publicationForm.get('title').touched && publicationForm.get('title').invalid">
+    <div *ngIf="formulario.get('title').touched && formulario.get('title').invalid">
       <ion-text color="danger">
-        <small *ngIf="publicationForm.get('title').hasError('required')">
+        <small *ngIf="formulario.get('title').hasError('required')">
           El título es requerido.
         </small>
-        <small *ngIf="publicationForm.get('title').hasError('minlength')">
+        <small *ngIf="formulario.get('title').hasError('minlength')">
           El título debe tener al menos 5 caracteres.
         </small>
       </ion-text>
@@ -25,12 +25,12 @@
       <ion-label position="stacked">Descripción</ion-label>
       <ion-textarea formControlName="description"></ion-textarea>
     </ion-item>
-    <div *ngIf="publicationForm.get('description').touched && publicationForm.get('description').invalid">
+    <div *ngIf="formulario.get('description').touched && formulario.get('description').invalid">
       <ion-text color="danger">
-        <small *ngIf="publicationForm.get('description').hasError('required')">
+        <small *ngIf="formulario.get('description').hasError('required')">
           La descripción es requerida.
         </small>
-        <small *ngIf="publicationForm.get('description').hasError('minlength')">
+        <small *ngIf="formulario.get('description').hasError('minlength')">
           La descripción debe tener al menos 20 caracteres.
         </small>
       </ion-text>
@@ -44,6 +44,6 @@
       <img [src]="image" alt="Vista previa de la imagen" style="max-width: 100%; margin-top: 10px;" />
     </div>
 
-    <ion-button expand="block" type="submit" [disabled]="publicationForm.invalid">Guardar</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="formulario.invalid">Guardar</ion-button>
   </form>
 </ion-content>

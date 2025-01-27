@@ -4,7 +4,8 @@ import { Preferences } from '@capacitor/preferences';
 export interface Publicacion {
   titulo: string;
   contenido: string;
-  fecha: string; // ISO string
+  fecha: Date;
+  image: String;
 }
 
 @Injectable({

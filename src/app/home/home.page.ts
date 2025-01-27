@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadPublications();
+    this.loadPublicaciones();
   }
 
-  loadPublications() {
+  loadPublicaciones() {
     this.publicaciones = this.publicacionService.getPublicaciones();
   }
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.deletePublication(publicacion);
+            this.deletePublicacion(publicacion);
           },
         },
       ],
@@ -51,16 +51,16 @@ export class HomeComponent implements OnInit {
     await alert.present();
   }
 
-  deletePublication(publicacion: Publicacion) {
+  deletePublicacion(publicacion: Publicacion) {
     const index = this.publicaciones.indexOf(publicacion);
     if (index > -1) {
       this.publicaciones.splice(index, 1);
       this.publicacionService.deletePublicacion(index);
-      this.loadPublications(); // Actualiza la lista para reflejar los cambios
+      this.loadPublicaciones(); 
     }
   }
 
-  goToCreatePublication() {
+  goToCreatePublicacion() {
     this.router.navigate(['/create']);
   }
 }

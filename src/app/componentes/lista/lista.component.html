@@ -9,10 +9,11 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let publicacion of publications; let i = index">
+    <ion-item *ngFor="let publicacion of publicaciones; let i = index">
       <ion-label>
-        <h2>{{ publicacion.title }}</h2>
-        <p>{{ publicacion.description }}</p>
+        <h2>{{ publicacion.titulo }}</h2>
+        <p>{{ publicacion.contenido }}</p>
+        <p>{{ publicacion.fecha | date: 'dd/MM/yyyy' }}</p>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button color="danger" (click)="confirmDelete(i)">

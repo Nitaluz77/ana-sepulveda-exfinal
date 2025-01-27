@@ -9,14 +9,15 @@ import { Publicacion } from 'src/app/publicacion.service';
   selector: 'app-lista',
   standalone: true,
   imports: [CommonModule, IonicModule],
-  templateUrl: './lista.component.html',
-})
+  templateUrl: './lista/lista.component.html',
+  })
+  
 export class ListaComponent implements OnInit {
-  publications: Publicacion[] = [];
+  publicaciones: Publicacion[] = [];
 
   constructor(
     private router: Router,
-    private publicationService: PublicacionService,
+    private publicacionService: PublicacionService,
     private alertController: AlertController
   ) {}
 
@@ -25,10 +26,10 @@ export class ListaComponent implements OnInit {
   }
 
   loadPublicaciones() {
-    this.publications = this.publicationService.getPublicaciones();
+    this.publicaciones = this.publicacionService.getPublicaciones();
   }
 
-  async confirmDelete(publicationIndex: number) {
+  async confirmDelete(publicacionIndex: number) {
     const alert = await this.alertController.create({
       header: 'Confirmar eliminación',
       message: '¿Estás seguro de que deseas eliminar esta publicación?',
@@ -40,8 +41,8 @@ export class ListaComponent implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.publicationService.deletePublicacion(publicationIndex);
-            this.loadPublicaciones(); // Recargar lista tras eliminar
+            this.publicacionService.deletePublicacion(publicacionIndex);
+            this.loadPublicaciones();
           },
         },
       ],
