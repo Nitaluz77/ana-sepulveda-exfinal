@@ -61,7 +61,7 @@ export class PublicacionService {
     try {
       this.publicaciones.splice(index, 1);
       await Preferences.set({
-        key: 'publicaciones', // Clave corregida
+        key: 'publicaciones', 
         value: JSON.stringify(this.publicaciones),
       });
     } catch (error) {

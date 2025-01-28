@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Publicacion } from 'src/app/publicacion.service';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-formulario',
@@ -40,6 +41,20 @@ export class FormularioComponent {
       this.publicacionService.savePublicacion(newPublicacion);
       this.router.navigate(['/']);
     }
+  }
+
+  async tomarFoto() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Camera,
+
+    })
+
+    this.image = 'data:image/jpeg;base64,${image.base64String}';
+    this.formulario.patchValue({image: this.image})
+
   }
 
   async onFileSelected(event: Event) {

@@ -35,6 +35,18 @@
         </small>
       </ion-text>
     </div>
+    <ion-button expanded="full" color="primary" (click)="tomarFoto()">Capturar Foto</ion-button>
+    <div *ngIf="image">
+      <img [src]="image" alt="Imagen capturada" />
+    </div>
+
+    <ion-item>
+      <input type="file"(change)="onFileSelected($event)" accept="image/*" />
+    </ion-item>
+
+    <ion-button type="submit" expand="full" [disabled]="formulario.invalid">Guardar</ion-button>
+    </form>
+    </ion-content>
 
     <ion-item>
       <ion-label position="stacked">Imagen</ion-label>
